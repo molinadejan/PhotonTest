@@ -39,6 +39,11 @@ namespace Com.Molinadejan.TestGame
             progressLabel.SetActive(true);
             controlPanel.SetActive(false);
 
+            // 일단 테스트 1
+            // 초당 패킷 전송 수
+            PhotonNetwork.SendRate = 60;
+            PhotonNetwork.SerializationRate = 30;
+
             if(PhotonNetwork.IsConnected)
             {
                 PhotonNetwork.JoinRandomRoom();
