@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections;
 
 namespace Com.Molinadejan.TestGame
 {
@@ -9,6 +10,8 @@ namespace Com.Molinadejan.TestGame
 
         [SerializeField]
         private float directionDampTime = 0.25f;
+
+        private float h, v;
         
         private void Start()
         {
@@ -18,8 +21,9 @@ namespace Com.Molinadejan.TestGame
             {
                 Debug.LogError("PlayerAnimatorManager is Missing Animator Component", this);
             }
+            //else StartCoroutine(GetRandomInput());
         }
-
+        
         private void Update()
         {
             if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
@@ -38,14 +42,29 @@ namespace Com.Molinadejan.TestGame
                 }
             }
 
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
 
             if (v < 0)
                 v = 0;
 
             animator.SetFloat("Speed", h * h + v * v);
             animator.SetFloat("Direction", h, directionDampTime, Time.deltaTime);
+        }
+
+        IEnumerator GetRandomInput()
+        {
+            while(true)
+            {
+                v = Random.Range(0, 2);
+
+                if (v == 0)
+                    h = Random.Range(-1, 2);
+                else
+                    h = 0;
+
+                yield return new WaitForSeconds(6f);
+            }
         }
     }
 }

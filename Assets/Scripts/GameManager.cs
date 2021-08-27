@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Com.Molinadejan.TestGame
 {
@@ -76,8 +73,11 @@ namespace Com.Molinadejan.TestGame
                 Debug.LogError("PhotonNetwork : Trying to Load level but we are not the master Client");
             }
 
-            Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+            //Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
+            //PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+
+            Debug.Log("PhotonNetwork : Loading Level : 4");
+            PhotonNetwork.LoadLevel("Room for 4");
         }
     }
 }

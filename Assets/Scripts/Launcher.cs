@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine;
 
 namespace Com.Molinadejan.TestGame
 {
     public class Launcher : MonoBehaviourPunCallbacks
     {
         [SerializeField]
-        private byte maxPlayersPerRoom = 4;
+        private byte maxPlayersPerRoom = 20;
 
         string gameVersion = "1";
 
@@ -82,7 +80,8 @@ namespace Com.Molinadejan.TestGame
         public override void OnJoinedRoom()
         {
             Debug.Log("OnJoinedRoom() was called by Pun");
-            PhotonNetwork.LoadLevel("Room for 1");
+            //PhotonNetwork.LoadLevel("Room for 1");
+            PhotonNetwork.LoadLevel("Room for 4");
         }
     }
 }
